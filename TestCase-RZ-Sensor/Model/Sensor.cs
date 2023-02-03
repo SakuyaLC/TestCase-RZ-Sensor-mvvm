@@ -24,5 +24,41 @@ namespace TestCase_RZ_Sensor.Model
             this.serialNumber = serialNumber;
         }
 
+        //Отключает прибор
+        private void Disable()
+        {
+
+        }
+
+        //Изменить состояние прибора на "Автоматика"
+        private void ChangeStateToAuto()
+        {
+
+        }
+
+        //Снимает тест???
+        private void DisableTest()
+        {
+
+        }
+
+        //Сбросить состояние
+        private void ResetState()
+        {
+
+        }
+
+        //Включить реле
+        private void EnableRelay()
+        {
+
+        }
+
+        //Отключить реле
+        private void DisableRelay()
+        {
+                
+        }
+
     }
 }
