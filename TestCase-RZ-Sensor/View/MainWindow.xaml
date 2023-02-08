@@ -3,10 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TestCase_RZ_Sensor"
+        xmlns:local="clr-namespace:TestCase_RZ_Sensor" xmlns:src="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:components="clr-namespace:TestCase_RZ_Sensor.Components"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Управление прибором" Height="540" Width="900">
+    <components:SensorControl Height="500" Width="750" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Top"/>
 
-    </Grid>
 </Window>

@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="TestCase_RZ_Sensor.Components.SensorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TestCase_RZ_Sensor.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="750" Background="White" BorderThickness="0,0,0,0">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" BorderBrush="Black" BorderThickness="2" >
+            <StackPanel Orientation="Vertical">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="FontSize" Value="18"/>
+                        <Setter Property="FontFamily" Value="Arial"/>
+                        <Setter Property="Margin" Value="5,25,0,0"/>
+                    </Style>
+                </StackPanel.Resources>
+                <StackPanel Orientation="Horizontal" Margin="0,-15,0,0">
+                    <TextBlock Text="Состояние:"/>
+                    <TextBlock Text="Выключен"  />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Пожар:"/>
+                    <TextBlock Text="Нет"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Реле:"/>
+                    <TextBlock Text="Выключено"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Тест:"/>
+                    <TextBlock Text="Нет"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Серийный номер:"/>
+                    <TextBlock Text="Нет"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="FontSize" Value="18"/>
+                        <Setter Property="FontFamily" Value="Arial"/>
+                        <Setter Property="Margin" Value="5,15,0,0"/>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBox Text="" Width="200"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

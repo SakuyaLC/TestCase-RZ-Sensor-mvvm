@@ -11,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TestCase_RZ_Sensor.View
+namespace TestCase_RZ_Sensor.Components
 {
     /// <summary>
-    /// Логика взаимодействия для SensorUserControl.xaml
+    /// Логика взаимодействия для SensorControl.xaml
     /// </summary>
-    public partial class SensorUserControl : UserControl
+    public partial class SensorControl : UserControl
     {
-        public SensorUserControl()
+        public SensorControl()
         {
             InitializeComponent();
         }
