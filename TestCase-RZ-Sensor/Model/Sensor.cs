@@ -5,23 +5,43 @@ using System.Text;
 
 namespace TestCase_RZ_Sensor.Model
 {
-    class Sensor
+    class Sensor : ISensor
     {
-        private byte state = 0;
-        private bool fireAlarm;
-        private bool relayIsOn;
-        private bool relayIsOff;
-        private bool test;
-        private ulong serialNumber;
+        public byte state = 0;
+        public bool fireAlarm;
+        public bool relayIsOn;
+        public bool test;
+        public ulong serialNumber;
 
         public Sensor(byte state, bool fireAlarm, bool relayIsOn, bool relayIsOff, bool test, ulong serialNumber)
         {
             this.state = state;
             this.fireAlarm = fireAlarm;
             this.relayIsOn = relayIsOn;
-            this.relayIsOff = relayIsOff;
             this.test = test;
             this.serialNumber = serialNumber;
+        }
+
+        //Получить описание прибора
+        private string GetSensorInfo()
+        {
+            return
+                $"[{serialNumber}] " +
+                $"{state} " +
+                $"({fireAlarm}," +
+                $"{relayIsOn})";
+        }
+
+        //Парсинг ответа от прибора по его параметрам с формированием свойств по данным из пакета. Формат пакета (byte[])
+        private void ParseResponse()
+        {
+
+        }
+
+        //Формирование пакета команды в прибор
+        private void CreateCommandPacket(byte command)
+        {
+
         }
 
         //Отключает прибор
@@ -30,7 +50,6 @@ namespace TestCase_RZ_Sensor.Model
             state = 0;
             fireAlarm = false;
             relayIsOn = false;
-            relayIsOff = true;
             test = false;
         }
 
@@ -56,14 +75,12 @@ namespace TestCase_RZ_Sensor.Model
         private void EnableRelay()
         {
             relayIsOn = true;
-            relayIsOff = false;
         }
 
         //Отключить реле
         private void DisableRelay()
         {
             relayIsOn = false;
-            relayIsOff = true;
         }
 
     }
