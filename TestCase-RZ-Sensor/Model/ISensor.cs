@@ -7,9 +7,9 @@ namespace TestCase_RZ_Sensor.Model
     interface ISensor
     { 
         //Получить серийный номер прибора
-        private ulong GetSerialNumber(Sensor sensor)
+        private ulong GetSerialNumber()
         {
-            return sensor.serialNumber;
+            return 123;
         }
 
         //Получить описание прибора

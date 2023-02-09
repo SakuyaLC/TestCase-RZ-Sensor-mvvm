@@ -24,7 +24,6 @@ namespace TestCase_RZ_Sensor
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new SensorViewModel();
         }
     }
 }

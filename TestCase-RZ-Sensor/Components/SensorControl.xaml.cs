@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestCase_RZ_Sensor.ViewModel;
 
 namespace TestCase_RZ_Sensor.Components
 {
@@ -21,6 +22,13 @@ namespace TestCase_RZ_Sensor.Components
         public SensorControl()
         {
             InitializeComponent();
+            Loaded += SensorControl_Loaded;
+        }
+
+        private void SensorControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = new SensorViewModel();
         }
     }
+
 }
