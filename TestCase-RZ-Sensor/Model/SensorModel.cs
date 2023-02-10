@@ -6,20 +6,13 @@ using System.Text;
 
 namespace TestCase_RZ_Sensor.Model
 {
-    public class SensorModel : INotifyPropertyChanged
+    public class SensorModel
     {
         public byte State { get; set; }
         public bool FireAlarm { get; set; }
         public bool RelayIsOn { get; set; }
         public bool Test { get; set; }
         public ulong SerialNumber { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
 
     }
 }

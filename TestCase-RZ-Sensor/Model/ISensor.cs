@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TestCase_RZ_Sensor.Model
 {
-    interface ISensor
+    public interface ISensor
     { 
         //Получить серийный номер прибора
         private ulong GetSerialNumber()
