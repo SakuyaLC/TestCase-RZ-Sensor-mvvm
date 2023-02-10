@@ -7,8 +7,8 @@
              xmlns:model="clr-namespace:TestCase_RZ_Sensor.Model"
              d:DataContext="{d:DesignInstance Type=model:SensorModel}"
              mc:Ignorable="d"
-             d:DesignHeight="540"
-             d:DesignWidth="900"
+             d:DesignHeight="500"
+             d:DesignWidth="750"
              BorderThickness="2,2,2,2"
              BorderBrush="Black"
              Background="White">
@@ -55,21 +55,22 @@
                         <StackPanel Orientation="Vertical"
                                     Grid.Column="1">
                             <StackPanel Orientation="Horizontal">
-                                <TextBox Height="20" Width="100"
+                                <TextBox Text="{Binding CommandInterface}" Height="20" Width="100"
                                          MaxLength="1"
                                          MaxLines="1"
                                          IsReadOnly="True" />
-                                <Button Content="X" Height="20" Width="20" />
+                                <Button Command="{Binding CmClear}" Content="X" Height="20" Width="20" />
+                                <Button Command="{Binding CmSend}" Content="Отправить" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Button Content="1" Height="20" Width="20" />
-                                <Button Content="2" Height="20" Width="20" />
-                                <Button Content="3" Height="20" Width="20" />
+                                <Button Command="{Binding MessageBoxCommand}" Content="1" Height="20" Width="20" />
+                                <Button Command="{Binding CmEnter2}" Content="2" Height="20" Width="20" />
+                                <Button Command="{Binding CmEnter3}" Content="3" Height="20" Width="20" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Button Content="4" Height="20" Width="20" />
-                                <Button Content="5" Height="20" Width="20" />
-                                <Button Content="6" Height="20" Width="20" />
+                                <Button Command="{Binding CmEnter4}" Content="4" Height="20" Width="20" />
+                                <Button Command="{Binding CmEnter5}" Content="5" Height="20" Width="20" />
+                                <Button Command="{Binding CmEnter6}" Content="6" Height="20" Width="20" />
                             </StackPanel>
                         </StackPanel>
                     </Grid>

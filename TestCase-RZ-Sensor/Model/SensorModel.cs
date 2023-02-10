@@ -6,7 +6,7 @@ using System.Text;
 
 namespace TestCase_RZ_Sensor.Model
 {
-    public class SensorModel
+    public class SensorModel : INotifyPropertyChanged
     {
         public byte State { get; set; }
         public bool FireAlarm { get; set; }
@@ -14,5 +14,6 @@ namespace TestCase_RZ_Sensor.Model
         public bool Test { get; set; }
         public ulong SerialNumber { get; set; }
 
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

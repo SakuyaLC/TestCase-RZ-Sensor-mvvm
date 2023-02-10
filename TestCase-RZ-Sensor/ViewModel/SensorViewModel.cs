@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows;
+using System.Windows.Input;
 using TestCase_RZ_Sensor.Model;
 
 namespace TestCase_RZ_Sensor.ViewModel
@@ -11,11 +15,13 @@ namespace TestCase_RZ_Sensor.ViewModel
         public SensorViewModel()
         {
             List<SensorModel> sensorsList = new List<SensorModel>() {
-                new SensorModel() { State = 0, FireAlarm = false, RelayIsOn = true, Test = true, SerialNumber = 222345 } };
+                new SensorModel() {State = 0, FireAlarm = false, RelayIsOn = true, Test = true, SerialNumber = 222345 } };
             Sensors = new List<SensorModel>(sensorsList);
+
         }
 
         private List<SensorModel> _Sensors;
+
         public List<SensorModel> Sensors
         {
             get { return _Sensors; }
