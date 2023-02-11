@@ -15,6 +15,7 @@ namespace TestCase_RZ_Sensor.ViewModel
 
         public int command;
 
+        //Управление кнопками
         public DelegateCommand CmEnter1 { get; private set; }
         public DelegateCommand CmEnter2 { get; private set; }
         public DelegateCommand CmEnter3 { get; private set; }
@@ -28,9 +29,10 @@ namespace TestCase_RZ_Sensor.ViewModel
         {
             Sensors = new ObservableCollection<SensorModel>()
             {
-                new SensorModel() {State = 0, FireAlarm = true, RelayIsOn = true, RelayIsOff = false, Test = true, SerialNumber = 222345, Commands = ""},
+                new SensorModel() {State = 2, StateString = "Автоматика", FireAlarm = true, RelayIsOn = true, RelayIsOff = false, Test = true, SerialNumber = 222345, Commands = ""},
             };
 
+            //Управление кнопками
             CmEnter1 = new DelegateCommand(CommandEnter1, CanEnterCommand);
             CmEnter2 = new DelegateCommand(CommandEnter2, CanEnterCommand);
             CmEnter3 = new DelegateCommand(CommandEnter3, CanEnterCommand);
@@ -39,6 +41,7 @@ namespace TestCase_RZ_Sensor.ViewModel
             CmEnter6 = new DelegateCommand(CommandEnter6, CanEnterCommand);
             CmSend = new DelegateCommand(CommandSend, CanEnterCommand);
             CmClear = new DelegateCommand(CommandClear, CanEnterCommand);
+
         }
 
         public void CommandEnter1(object message)
@@ -71,37 +74,61 @@ namespace TestCase_RZ_Sensor.ViewModel
             Sensors[0].Commands = "6";
         }
 
+        //При отправке команды в интерфейс
         async public void CommandSend(object message)
         {
             await Task.Run(
                 () =>
                 {
-                    command = Int32.Parse(Sensors[0].Commands);
-
-                    switch (command)
+                    if (!Sensors[0].Commands.Equals("") && !Sensors[0].Commands.Equals(null))
                     {
-                        case 1:
-                            Sensors[0].State = 0;
-                            break;
-                        case 2:
-                            Sensors[0].State = 2;
-                            break;
-                        case 3:
-                            Sensors[0].Test = !Sensors[0].Test;
-                            break;
-                        case 4:
-                            Sensors[0].State = 1;
-                            break;
-                        case 5:
-                            Sensors[0].RelayIsOn = true;
-                            Sensors[0].RelayIsOff = false;
-                            break;
-                        case 6:
-                            Sensors[0].RelayIsOn = false;
-                            Sensors[0].RelayIsOff = true;
-                            break;
-                    }
+                        command = Int32.Parse(Sensors[0].Commands);
 
+                        switch (command)
+                        {
+                            case 1:
+                                Sensors[0].State = 0;
+                                Sensors[0].FireAlarm = false;
+                                Sensors[0].RelayIsOn = false;
+                                Sensors[0].RelayIsOff = true;
+                                Sensors[0].Test = false;
+                                Sensors[0].StateString = "Выключен";
+                                break;
+                            case 2:
+                                Sensors[0].State = 2;
+                                Sensors[0].StateString = "Автоматика";
+                                break;
+                            case 3:
+                                if (Sensors[0].State != 0)
+                                {
+                                    Sensors[0].Test = !Sensors[0].Test;
+                                }
+                                break;
+                            case 4:
+                                Sensors[0].State = 1;
+                                Sensors[0].FireAlarm = false;
+                                Sensors[0].RelayIsOn = false;
+                                Sensors[0].RelayIsOff = true;
+                                Sensors[0].Test = false;
+                                Sensors[0].StateString = "Ручное";
+                                break;
+                            case 5:
+                                if (Sensors[0].State != 0)
+                                {
+                                    Sensors[0].RelayIsOn = true;
+                                    Sensors[0].RelayIsOff = false;
+                                }
+                                break;
+                            case 6:
+                                if (Sensors[0].State != 0)
+                                {
+                                    Sensors[0].RelayIsOn = false;
+                                    Sensors[0].RelayIsOff = true;
+                                }
+                                break;
+                        }
+
+                    }
                     Sensors[0].Commands = "";
                 }
             );
@@ -117,5 +144,6 @@ namespace TestCase_RZ_Sensor.ViewModel
         {
             return true;
         }
+
     }
 }

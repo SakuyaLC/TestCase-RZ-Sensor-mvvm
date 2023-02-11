@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -11,6 +13,7 @@ namespace TestCase_RZ_Sensor.Model
     public class SensorModel : INotifyPropertyChanged, ISensor
     {
         private byte _state { get; set; }
+        private string _stateString { get; set; }
         private bool _fireAlarm { get; set; }
         private bool _RelayIsOn { get; set; }
         private bool _RelayIsOff { get; set; }
@@ -19,8 +22,23 @@ namespace TestCase_RZ_Sensor.Model
         private string _commands { get; set; }
 
         //Парсинг ответа от прибора по его параметрам с формированием свойств по данным из пакета. Формат пакета (byte[])
-        public void ParseResponse(byte[] commandPacket)
+        public async void ParseResponse(byte[] commandPacket)
         {
+            BitArray parsedResponse;
+
+            await Task.Run(
+            () =>
+            {
+                byte[] t1 = BitConverter.GetBytes(State);
+                byte[] t2 = BitConverter.GetBytes(FireAlarm);
+                byte[] t3 = BitConverter.GetBytes(RelayIsOn);
+                byte[] t4 = BitConverter.GetBytes(RelayIsOff);
+
+                byte[] t5 = (byte[])commandPacket.Concat(t1).Concat(t2).Concat(t3).Concat(t4);
+
+                parsedResponse = new BitArray(t5);
+
+            });
 
         }
 
@@ -32,7 +50,7 @@ namespace TestCase_RZ_Sensor.Model
             await Task.Run(
             () =>
             {
-                byte[] t1 = BitConverter.GetBytes(this.SerialNumber);
+                byte[] t1 = BitConverter.GetBytes(SerialNumber);
                 byte[] t2 = BitConverter.GetBytes(command);
 
                 if (!t1.Equals(null) && !t2.Equals(null))
@@ -95,6 +113,16 @@ namespace TestCase_RZ_Sensor.Model
             {
                 _state = value;
                 OnPropertyChanged("State");
+            }
+        }
+
+        public string StateString
+        {
+            get { return _stateString; }
+            set
+            {
+                _stateString = value;
+                OnPropertyChanged("StateString");
             }
         }
 

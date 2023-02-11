@@ -24,13 +24,13 @@
                             <Border BorderBrush="Black" CornerRadius="2" BorderThickness="1">
                                 <StackPanel x:Name="State" Orientation="Horizontal" VerticalAlignment="Center" Margin="5,15,5,15">
                                     <TextBlock FontSize="20" FontFamily="Arial" Text="Состояние: " />
-                                    <TextBlock FontSize="20" FontFamily="Arial" Text="{Binding State}" />
+                                    <TextBlock FontSize="20" FontFamily="Arial" Text="{Binding StateString}" />
                                 </StackPanel>
                             </Border>
                             <Border BorderBrush="Black" CornerRadius="2" BorderThickness="1,0,1,1">
                                 <StackPanel x:Name="FireAlarm" Orientation="Horizontal" VerticalAlignment="Center" Margin="5,15,5,15">
                                     <TextBlock FontSize="20" FontFamily="Arial" Text="Пожар: " />
-                                    <CheckBox FontSize="20" FontFamily="Arial" IsChecked="{Binding FireAlarm}" IsHitTestVisible="False" VerticalAlignment="Center" Foreground="Red" />
+                                    <CheckBox FontSize="20" FontFamily="Arial" IsChecked="{Binding FireAlarm}" IsHitTestVisible="False" VerticalAlignment="Center" Foreground="{x:Null}" />
                                 </StackPanel>
                             </Border>
                             <Border BorderBrush="Black" CornerRadius="2" BorderThickness="1,0,1,1" VerticalAlignment="Center">
