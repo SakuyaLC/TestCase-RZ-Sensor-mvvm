@@ -28,7 +28,7 @@ namespace TestCase_RZ_Sensor.ViewModel
         {
             Sensors = new ObservableCollection<SensorModel>()
             {
-                new SensorModel() {State = 0, FireAlarm = false, RelayIsOn = true, Test = true, SerialNumber = 222345, Commands = ""},
+                new SensorModel() {State = 0, FireAlarm = true, RelayIsOn = true, RelayIsOff = false, Test = true, SerialNumber = 222345, Commands = ""},
             };
 
             CmEnter1 = new DelegateCommand(CommandEnter1, CanEnterCommand);
@@ -94,13 +94,13 @@ namespace TestCase_RZ_Sensor.ViewModel
                             break;
                         case 5:
                             Sensors[0].RelayIsOn = true;
+                            Sensors[0].RelayIsOff = false;
                             break;
                         case 6:
                             Sensors[0].RelayIsOn = false;
+                            Sensors[0].RelayIsOff = true;
                             break;
                     }
-
-                    Trace.WriteLine(Sensors[0].FormCommandPacket(command));
 
                     Sensors[0].Commands = "";
                 }
