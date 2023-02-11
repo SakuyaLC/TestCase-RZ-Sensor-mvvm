@@ -13,7 +13,7 @@
              BorderBrush="Black"
              Background="White">
     <Grid HorizontalAlignment="Left">
-        <ItemsControl ItemsSource="{Binding Sensors}">
+        <ItemsControl ItemsSource="{Binding Sensors}" >
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -55,22 +55,46 @@
                         <StackPanel Orientation="Vertical"
                                     Grid.Column="1">
                             <StackPanel Orientation="Horizontal">
-                                <TextBox Text="{Binding CommandInterface}" Height="20" Width="100"
+                                <TextBox Text="{Binding Commands}"
+                                         Height="20"
+                                         Width="100"
                                          MaxLength="1"
                                          MaxLines="1"
                                          IsReadOnly="True" />
-                                <Button Command="{Binding CmClear}" Content="X" Height="20" Width="20" />
-                                <Button Command="{Binding CmSend}" Content="Отправить" />
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.CmClear}"
+                                        Content="X"
+                                        Height="20"
+                                        Width="20" />
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.CmSend}"
+                                        Content="Отправить" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Button Command="{Binding MessageBoxCommand}" Content="1" Height="20" Width="20" />
-                                <Button Command="{Binding CmEnter2}" Content="2" Height="20" Width="20" />
-                                <Button Command="{Binding CmEnter3}" Content="3" Height="20" Width="20" />
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.CmEnter1}"
+                                        Content="1"
+                                        Height="20"
+                                        Width="20" />
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.CmEnter2}"
+                                        Content="2"
+                                        Height="20"
+                                        Width="20" />
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.CmEnter3}"
+                                        Content="3"
+                                        Height="20"
+                                        Width="20" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Button Command="{Binding CmEnter4}" Content="4" Height="20" Width="20" />
-                                <Button Command="{Binding CmEnter5}" Content="5" Height="20" Width="20" />
-                                <Button Command="{Binding CmEnter6}" Content="6" Height="20" Width="20" />
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.CmEnter4}"
+                                        Content="4"
+                                        Height="20"
+                                        Width="20" />
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.CmEnter5}"
+                                        Content="5"
+                                        Height="20"
+                                        Width="20" />
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.CmEnter6}"
+                                        Content="6"
+                                        Height="20"
+                                        Width="20" />
                             </StackPanel>
                         </StackPanel>
                     </Grid>
